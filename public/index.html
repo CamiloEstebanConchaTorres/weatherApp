@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pronóstico del Tiempo - Járkov</title>
+    <title>Pronóstico del Tiempo</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
@@ -32,59 +32,152 @@
                 </div>
             </div>
         </div>
-        <div class="tabs">
-            <div class="tab">Hoy</div>
-            <div class="tab">Mañana</div>
-            <div class="tab">10 días</div>
-        </div>
-        <div class="details">
-            <div class="detail-item">
-                <div>Velocidad del viento</div>
-                <div>12km/h</div>
+        <section class="container_bajo">
+            <div class="tabs">
+                <div class="tab active">Hoy</div>
+                <div class="tab">Mañana</div>
+                <div class="tab">10 días</div>
             </div>
-            <div class="detail-item">
-                <div>Probabilidad de lluvia</div>
-                <div>24%</div>
-            </div>
-            <div class="detail-item">
-                <div>Presión</div>
-                <div>720 hpa</div>
-            </div>
-            <div class="detail-item">
-                <div>Índice UV</div>
-                <div>2.3</div>
-            </div>
-        </div>
-        <div class="forecast">
-            <h3>Pronóstico por hora</h3>
-            <div class="forecast-items">
-                <div class="forecast-item">
-                    <div>Ahora</div>
-                    <div>🌤️</div>
-                    <div>10°</div>
+            <div class="details">
+                <div class="detail-item">
+                    <img src="./storage/img/windSpeed.png" alt="Viento">
+                    <div>
+                        <div>Velocidad del viento</div>
+                        <div>12km/h</div>
+                    </div>
                 </div>
-                <div class="forecast-item">
-                    <div>10AM</div>
-                    <div>🌤️</div>
-                    <div>8°</div>
+                <div class="detail-item">
+                    <img src="./storage/img/rainy.png" alt="Lluvia">
+                    <div>
+                        <div>Probabilidad de lluvia</div>
+                        <div>24%</div>
+                    </div>
                 </div>
-                <div class="forecast-item">
-                    <div>11AM</div>
-                    <div>🌤️</div>
-                    <div>5°</div>
+                <div class="detail-item">
+                    <img src="./storage/img/waves.png" alt="Presión">
+                    <div>
+                        <div>Presión</div>
+                        <div>720 hpa</div>
+                    </div>
                 </div>
-                <div class="forecast-item">
-                    <div>12PM</div>
-                    <div>🌤️</div>
-                    <div>12°</div>
-                </div>
-                <div class="forecast-item">
-                    <div>1PM</div>
-                    <div>🌤️</div>
-                    <div>9°</div>
+                <div class="detail-item">
+                    <img src="./storage/img/light_mode.png" alt="UV">
+                    <div>
+                        <div>Índice UV</div>
+                        <div>2.3</div>
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="forecast">
+                <h3>Pronóstico por hora</h3>
+                <div class="forecast-items">
+                    <div class="forecast-item">
+                        <div>Ahora</div>
+                        <img src="./storage/img/now.png" alt="Parcialmente nublado">
+                        <div>10°</div>
+                    </div>
+                    <div class="forecast-item">
+                        <div>10AM</div>
+                        <img src="./storage/img/cloud.png" alt="Parcialmente nublado">
+                        <div>8°</div>
+                    </div>
+                    <div class="forecast-item">
+                        <div>11AM</div>
+                        <img src="./storage/img/cloud.png" alt="Parcialmente nublado">
+                        <div>5°</div>
+                    </div>
+                    <div class="forecast-item">
+                        <div>12PM</div>
+                        <img src="./storage/img/now.png"" alt="Parcialmente nublado">
+                        <div>12°</div>
+                    </div>
+                    <div class="forecast-item">
+                        <div>1PM</div>
+                        <img src="./storage/img/now.png"" alt="Parcialmente nublado">
+                        <div>9°</div>
+                    </div>
+                    <div class="forecast-item">
+                        <div>2PM</div>
+                        <img src="./storage/img/now.png"" alt="Parcialmente nublado">
+                        <div>12°</div>
+                    </div>
+                </div>
+            </div>
+            <div class="day-forecast">
+                <h3>Pronóstico del día</h3>
+                <div class="day-forecast-chart">
+                  <div class="day-forecast-item">
+                    <div class="day-name">Mon</div>
+                    <div class="day-temp">-5°</div>
+                  </div>
+                  <div class="day-forecast-item">
+                    <div class="day-name">Tue</div>
+                    <div class="day-temp">-3°</div>
+                  </div>
+                  <div class="day-forecast-item">
+                    <div class="day-name">Wed</div>
+                    <div class="day-temp">3°</div>
+                  </div>
+                  <div class="day-forecast-item">
+                    <div class="day-name">Thu</div>
+                    <div class="day-temp">1°</div>
+                  </div>
+                  <div class="day-forecast-item">
+                    <div class="day-name">Fri</div>
+                    <div class="day-temp">0°</div>
+                  </div>
+                  <div class="day-forecast-item">
+                    <div class="day-name">Sat</div>
+                    <div class="day-temp">2°</div>
+                  </div>
+                  <div class="day-forecast-item">
+                    <div class="day-name">Sun</div>
+                    <div class="day-temp">-1°</div>
+                  </div>
+                </div>
+              </div>
+            <div class="chance-of-rain">
+                <h3>Probabilidad de lluvia</h3>
+                <div class="chance-of-rain-bar">
+                    <div class="time">7 PM</div>
+                    <div class="bar">
+                        <div class="fill" style="width: 27%;"></div>
+                    </div>
+                    <div>27%</div>
+                </div>
+                <div class="chance-of-rain-bar">
+                    <div class="time">8 PM</div>
+                    <div class="bar">
+                        <div class="fill" style="width: 44%;"></div>
+                    </div>
+                    <div>44%</div>
+                </div>
+                <div class="chance-of-rain-bar">
+                    <div class="time">9 PM</div>
+                    <div class="bar">
+                        <div class="fill" style="width: 56%;"></div>
+                    </div>
+                    <div>56%</div>
+                </div>
+                <div class="chance-of-rain-bar">
+                    <div class="time">10 PM</div>
+                    <div class="bar">
+                        <div class="fill" style="width: 88%;"></div>
+                    </div>
+                    <div>88%</div>
+                </div>
+            </div>
+            <div class="sunrise-sunset">
+                <div class="time">
+                    <img src="./storage/img/luna.png" alt="Sunrise">
+                    <div>4:20 AM</div>
+                </div>
+                <div class="time">
+                    <img src="./storage/img/sunset.png" alt="Sunset">
+                    <div>4:30 PM</div>
+                </div>
+            </div>
+        </section>
     </div>
 </body>
 </html>

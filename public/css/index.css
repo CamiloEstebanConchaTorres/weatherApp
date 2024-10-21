@@ -5,7 +5,6 @@ body {
     padding: 0px;
 }
 .container {
-
     margin: 0 auto;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 20px;
@@ -69,40 +68,186 @@ body {
     margin-top: 20px;
     font-size: 14px;
 }
+
+.container_bajo {
+    background-color: #F6EDFF;
+    padding: 20px;
+    border-radius: 20px;
+}
+
 .tabs {
     display: flex;
-    margin-top: 20px;
+    justify-content: space-between;
     gap: 10px;
+    margin-bottom: 20px;
 }
+
 .tab {
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 14px;
+    background-color: white;
+    color: black;
+    padding: 8px 20px;
+    border-radius: 10px;
+    font-size: 1rem;
 }
+
+.tab.active {
+    background-color: #E0B6FF;
+}
+
 .details {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 20px;
+    gap: 15px;
+    margin-bottom: 20px;
 }
+
 .detail-item {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #d0bcff5b;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 15px;
     font-size: 14px;
+    color: #333;
+    display: flex;
+    align-items: center;
 }
-.forecast {
+
+.detail-item img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.detail-item div:first-child {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.forecast h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.day-forecast{
+    background: #d0bcff5b;
+    padding: 10px;
+    border-radius: 15px;
     margin-top: 20px;
 }
-.forecast h3 {
-    margin-bottom: 10px;
-}
+
 .forecast-items {
     display: flex;
     justify-content: space-between;
+    overflow-x: auto;
 }
+
 .forecast-item {
     text-align: center;
     font-size: 14px;
+    color: #333;
 }
+
+.forecast-item img {
+    width: 40px;
+    height: 40px;
+    margin: 5px 0;
+}
+
+.chance-of-rain {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.chance-of-rain h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.chance-of-rain-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.chance-of-rain-bar .time {
+    width: 50px;
+    font-size: 14px;
+    color: #333;
+}
+
+.chance-of-rain-bar div:last-child {
+    color: black;
+}
+
+.chance-of-rain-bar .bar {
+    flex-grow: 1;
+    height: 16px;
+    background-color: #d0bcff5b;
+    border-radius: 8px;
+    margin-right: 10px;
+    overflow: hidden;
+}
+
+.chance-of-rain-bar .bar .fill {
+    height: 100%;
+    background-color: #8A20D5;
+    border-radius: 8px;
+}
+
+
+.sunrise-sunset {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.sunrise-sunset .time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+}
+
+.sunrise-sunset .time img {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 5px;
+}
+
+.day-forecast {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .day-forecast h3 {
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .day-forecast-chart {
+    display: flex;
+    justify-content: space-between;
+    overflow-x: auto;
+  }
+  
+  .day-forecast-item {
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    padding: 10px;
+    background-color: #d0bcff5b;
+    border-radius: 15px;
+    min-width: 80px;
+  }
+  
+  .day-forecast-item .day-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .day-forecast-item .day-temp {
+    font-size: 16px;
+  }
+
