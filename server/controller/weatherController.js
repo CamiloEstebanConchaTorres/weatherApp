@@ -137,6 +137,25 @@ const weatherController = {
                 details: error.message
             });
         }
+    },
+
+    async searchCities(req, res) {
+        try {
+            const { query } = req.params;
+            const apiKey = process.env.WEATHER_API_KEY;
+            
+            const response = await axios.get(`http://api.weatherapi.com/v1/search.json?key=${apiKey}&q=${query}&lang=es`);
+            
+            const cities = response.data.map(city => `${city.name}, ${city.country}`);
+            
+            res.json(cities);
+        } catch (error) {
+            console.error('Error en searchCities:', error);
+            res.status(500).json({
+                error: 'Error al buscar ciudades',
+                details: error.message
+            });
+        }
     }
 };
 

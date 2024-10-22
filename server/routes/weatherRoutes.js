@@ -11,4 +11,7 @@ router.get('/hourly/:city?', weatherController.getHourlyForecast);
 
 router.get('/daily/:city?', weatherController.getDailyForecast);
 
+router.get('/cities/:query', weatherController.searchCities);
+
+
 module.exports = router;

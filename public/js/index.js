@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     loadWeatherData();
+    document.getElementById('search-button').addEventListener('click', searchCities);
+    document.getElementById('city-input').addEventListener('input', showSuggestions);
+    document.getElementById('suggestions').addEventListener('click', selectCity);
 });
 
 async function loadWeatherData(city = 'Járkov') {
@@ -13,6 +16,33 @@ async function loadWeatherData(city = 'Járkov') {
         updateUI(data);
     } catch (error) {
         console.error('Error:', error);
+    }
+}
+
+async function searchCities() {
+    const cityInput = document.getElementById('city-input').value;
+    const response = await fetch(`/api/weather/cities/${cityInput}`);
+    const cities = await response.json();
+    
+    const suggestions = document.getElementById('suggestions');
+    suggestions.innerHTML = cities.map(city => `<li>${city}</li>`).join('');
+}
+
+function showSuggestions() {
+    const suggestions = document.getElementById('suggestions');
+    if (this.value) {
+        suggestions.style.display = 'block';
+    } else {
+        suggestions.style.display = 'none';
+    }
+}
+
+function selectCity(event) {
+    if (event.target.tagName === 'LI') {
+        const selectedCity = event.target.textContent;
+        document.getElementById('city-input').value = selectedCity;
+        loadWeatherData(selectedCity);
+        document.getElementById('suggestions').style.display = 'none';
     }
 }
 

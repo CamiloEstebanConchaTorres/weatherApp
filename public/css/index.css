@@ -10,6 +10,39 @@ body {
     border-radius: 20px;
 }
 
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#city-input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 5px;
+}
+
+.suggestions-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    position: absolute;
+    z-index: 1000;
+}
+
+.suggestions-list li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.suggestions-list li:hover {
+    background-color: #f0f0f0;
+}
+
+
 .imageweather{
     background-image: url(../storage/img/climaimage.png);
     background-repeat: no-repeat;
