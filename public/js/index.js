@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('suggestions').addEventListener('click', selectCity);
 });
 
-async function loadWeatherData(city = 'Járkov') {
+async function loadWeatherData(city = 'Floridablanca') {
     try {
         const response = await fetch(`/api/weather/current/${city}`);
         if (!response.ok) {

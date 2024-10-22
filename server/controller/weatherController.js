@@ -3,7 +3,7 @@ const axios = require('axios');
 const weatherController = {
     async getCurrentWeather(req, res) {
         try {
-            const { city = 'Járkov' } = req.params;
+            const { city = 'Floridablanca' } = req.params;
             const apiKey = process.env.WEATHER_API_KEY;
             
             const response = await axios.get(
@@ -75,7 +75,7 @@ const weatherController = {
 
     async getHourlyForecast(req, res) {
         try {
-            const { city = 'Járkov' } = req.params;
+            const { city = 'Floridablanca' } = req.params;
             const apiKey = process.env.WEATHER_API_KEY;
             
             const response = await axios.get(
@@ -111,7 +111,7 @@ const weatherController = {
 
     async getDailyForecast(req, res) {
         try {
-            const { city = 'Járkov' } = req.params;
+            const { city = 'Floridablanca' } = req.params;
             const apiKey = process.env.WEATHER_API_KEY;
             
             const response = await axios.get(
