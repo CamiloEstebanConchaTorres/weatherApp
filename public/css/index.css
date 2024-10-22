@@ -27,10 +27,12 @@ body {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    background-color: white;
+    top: 100px;
+    background-color: rgba(255, 255, 255, 0.507);
     border: 1px solid #ccc;
     position: absolute;
     z-index: 1000;
+    color: black;
 }
 
 .suggestions-list li {
