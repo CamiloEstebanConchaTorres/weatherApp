@@ -65,12 +65,12 @@ function updateUI(data) {
     });
     
 
-    document.querySelector('.detail-item:nth-child(1) div:last-child').textContent = `${data.current.wind_kph}km/h`;
+    document.querySelector('.detail-item:nth-child(1) div:last-child').textContent = `Velocidad del viento ${data.current.wind_kph}km/h`;
     document.querySelector('.detail-item:nth-child(2) div:last-child').textContent = 
-        `${data.forecast.hourly[0]?.chance_of_rain || 0}%`;
+        `Probabilidad de lluvia ${data.forecast.hourly[0]?.chance_of_rain || 0}%`;
     document.querySelector('.detail-item:nth-child(3) div:last-child').textContent = 
-        `${data.current.pressure_mb} hpa`;
-    document.querySelector('.detail-item:nth-child(4) div:last-child').textContent = data.current.uv;
+        `Presión ${data.current.pressure_mb} hpa`;
+    document.querySelector('.detail-item:nth-child(4) div:last-child').textContent = `Índice UV ${data.current.uv }`;
     
 
     updateHourlyForecast(data.forecast.hourly);
