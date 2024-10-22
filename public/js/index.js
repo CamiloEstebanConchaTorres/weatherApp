@@ -3,7 +3,29 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('search-button').addEventListener('click', searchCities);
     document.getElementById('city-input').addEventListener('input', showSuggestions);
     document.getElementById('suggestions').addEventListener('click', selectCity);
+
+    document.getElementById('today-button').addEventListener('click', () => {
+        const cityInput = document.getElementById('city-input').value || 'Floridablanca';
+        loadWeatherData(cityInput);
+        setActiveTab(document.getElementById('today-button'));
+    });
+    document.getElementById('tomorrow-button').addEventListener('click', () => {
+        loadTomorrowForecast();
+        setActiveTab(document.getElementById('tomorrow-button'));
+    });
+    document.getElementById('ten-days-button').addEventListener('click', () => {
+        loadTenDayForecast();
+        setActiveTab(document.getElementById('ten-days-button'));
+    });
 });
+
+function setActiveTab(activeTab) {
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(tab => {
+        tab.classList.remove('active');
+    });
+    activeTab.classList.add('active');
+}
 
 async function loadWeatherData(city = 'Floridablanca') {
     try {
@@ -11,19 +33,33 @@ async function loadWeatherData(city = 'Floridablanca') {
         if (!response.ok) {
             throw new Error('Error al obtener datos del clima');
         }
-        
         const data = await response.json();
         updateUI(data);
+        const todayData = data.forecast.daily[0];
+        updateDailyForecast([todayData]);
     } catch (error) {
         console.error('Error:', error);
     }
+}
+
+async function loadTomorrowForecast() {
+    const cityInput = document.getElementById('city-input').value || 'Floridablanca';
+    const response = await fetch(`/api/weather/daily/${cityInput}`);
+    const dailyData = await response.json();
+    updateDailyForecast([dailyData[1]]);
+}
+
+async function loadTenDayForecast() {
+    const cityInput = document.getElementById('city-input').value || 'Floridablanca';
+    const response = await fetch(`/api/weather/ten-day/${cityInput}`);
+    const dailyData = await response.json();
+    updateDailyForecast(dailyData);
 }
 
 async function searchCities() {
     const cityInput = document.getElementById('city-input').value;
     const response = await fetch(`/api/weather/cities/${cityInput}`);
     const cities = await response.json();
-    
     const suggestions = document.getElementById('suggestions');
     suggestions.innerHTML = cities.map(city => `<li>${city}</li>`).join('');
 }
@@ -54,7 +90,6 @@ function updateUI(data) {
     const cloudyDiv = document.querySelector('.Cloudy');
     cloudyDiv.querySelector('img').src = data.current.condition.icon;
     cloudyDiv.querySelector('div').textContent = data.current.condition.text;
-    
 
     const now = new Date();
     document.querySelector('.date').textContent = now.toLocaleDateString('es-ES', {
@@ -63,24 +98,15 @@ function updateUI(data) {
         hour: '2-digit',
         minute: '2-digit'
     });
-    
 
     document.querySelector('.detail-item:nth-child(1) div:last-child').textContent = `Velocidad del viento ${data.current.wind_kph}km/h`;
-    document.querySelector('.detail-item:nth-child(2) div:last-child').textContent = 
-        `Probabilidad de lluvia ${data.forecast.hourly[0]?.chance_of_rain || 0}%`;
-    document.querySelector('.detail-item:nth-child(3) div:last-child').textContent = 
-        `Presión ${data.current.pressure_mb} hpa`;
-    document.querySelector('.detail-item:nth-child(4) div:last-child').textContent = `Índice UV ${data.current.uv }`;
-    
+    document.querySelector('.detail-item:nth-child(2) div:last-child').textContent = `Probabilidad de lluvia ${data.forecast.hourly[0]?.chance_of_rain || 0}%`;
+    document.querySelector('.detail-item:nth-child(3) div:last-child').textContent = `Presión ${data.current.pressure_mb} hpa`;
+    document.querySelector('.detail-item:nth-child(4) div:last-child').textContent = `Índice UV ${data.current.uv}`;
 
     updateHourlyForecast(data.forecast.hourly);
-    
-
     updateDailyForecast(data.forecast.daily);
-    
-
     updateRainChance(data.forecast.hourly);
-    
 
     document.querySelector('.sunrise-sunset .time:first-child div').textContent = data.astronomy.sunrise;
     document.querySelector('.sunrise-sunset .time:last-child div').textContent = data.astronomy.sunset;
@@ -111,7 +137,7 @@ function updateRainChance(hourlyData) {
     const rainContainer = document.querySelector('.chance-of-rain');
     const existingBars = rainContainer.querySelectorAll('.chance-of-rain-bar');
     existingBars.forEach(bar => bar.remove());
-    
+
     const rainBars = hourlyData.slice(0, 4).map(hour => `
         <div class="chance-of-rain-bar">
             <div class="time">${hour.time}</div>
@@ -121,6 +147,6 @@ function updateRainChance(hourlyData) {
             <div>${hour.chance_of_rain}%</div>
         </div>
     `).join('');
-    
+
     rainContainer.querySelector('h3').insertAdjacentHTML('afterend', rainBars);
 }

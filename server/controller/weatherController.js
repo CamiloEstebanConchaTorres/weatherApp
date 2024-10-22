@@ -156,7 +156,38 @@ const weatherController = {
                 details: error.message
             });
         }
+    },
+    
+    async getTenDayForecast(req, res) {
+        try {
+            const { city = 'Floridablanca' } = req.params;
+            const apiKey = process.env.WEATHER_API_KEY;
+    
+            const response = await axios.get(
+                `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=10&aqi=no&lang=es`
+            );
+    
+            const dailyData = response.data.forecast.forecastday.map(day => ({
+                date: day.date,
+                day_name: new Date(day.date).toLocaleDateString('es-ES', { weekday: 'short' }),
+                max_temp: Math.round(day.day.maxtemp_c),
+                min_temp: Math.round(day.day.mintemp_c),
+                condition: {
+                    text: day.day.condition.text,
+                    icon: day.day.condition.icon
+                }
+            }));
+    
+            res.json(dailyData);
+        } catch (error) {
+            console.error('Error en getTenDayForecast:', error);
+            res.status(500).json({
+                error: 'Error al obtener pronóstico de 10 días',
+                details: error.message
+            });
+        }
     }
+    
 };
 
 module.exports = weatherController;
